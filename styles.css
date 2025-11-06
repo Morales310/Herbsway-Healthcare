@@ -1,0 +1,890 @@
+        :root {
+            --color-primary: #007bce;
+            --color-primary-light: #004c91;
+            --color-white: #ffffff;
+            --color-text: #333333;
+            --color-background-light: #cfe9f8;
+            --color-note-bg: #ffd447;
+            --color-note-text: #856404;
+            --color-warning-bg: #f8d7da;
+            --color-warning-text: #721c24;
+            --color-icons: #5bc0f8;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            /* Base font size */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: linear-gradient(90deg, #5bc0f8, #f0f6fa);
+            min-height: 100vh;
+        }
+
+        /* --- Typography --- */
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--color-primary);
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p,
+        ul,
+        ol,
+        aside {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--color-primary-light);
+        }
+
+        /* --- Layout Structure --- */
+        header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: var(--spacing-sm) 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-radius: 40px;
+        }
+
+        main {
+            padding-top: var(--spacing-lg);
+        }
+
+        section {
+            padding: var(--spacing-xl) var(--spacing-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--color-background-light);
+        }
+
+        /* --- Navigation & Header --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            position: sticky;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            /* Ensure logo fits properly */
+        }
+
+        .logo h2 {
+            color: var(--color-white);
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        nav ul a {
+            color: var(--color-white);
+            font-weight: bold;
+            padding: 0.5rem 0;
+            display: block;
+        }
+
+        nav ul a:hover {
+            color: var(--color-primary-light);
+            border-bottom: 2px solid var(--color-primary-light);
+        }
+
+        .nav-toggle {
+            display: none;
+            /* Hide on desktop */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--spacing-xs);
+        }
+
+        .nav-toggle svg {
+            fill: var(--color-white);
+            width: 28px;
+            height: 28px;
+        }
+
+        /* --- Hero Section (#home) --- */
+        #home {
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        #home h1 {
+            color: var(--color-primary);
+        }
+
+        /* --- Image Upload Section --- */
+        .upload-section {
+            padding: var(--spacing-lg) 0;
+            border: 1px dashed var(--color-primary-light);
+            border-radius: var(--border-radius);
+            background-color: var(--color-white);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .file-input-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-label {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .file-input-label:hover {
+            background-color: var(--color-primary-light);
+        }
+
+        #imageUpload {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        .preview-container {
+            border: 1px solid #ccc;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--border-radius);
+        }
+
+        #imagePreview {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+
+        .upload-progress {
+            width: 100%;
+            max-width: 300px;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--color-primary);
+            border-radius: 4px;
+            transition: width 0.4s;
+        }
+
+        .upload-message {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius);
+            display: none;
+            font-weight: bold;
+        }
+
+        .upload-message.success {
+            background-color: var(--color-note-bg);
+            /* Use note theme for success */
+            color: var(--color-note-text);
+        }
+
+        .upload-message.error {
+            background-color: var(--color-warning-bg);
+            /* Use warning theme for errors */
+            color: var(--color-warning-text);
+        }
+
+        /* --- Modal Styling --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Dark overlay */
+            display: none;
+            /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .modal.is-open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .modal.is-open .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--color-background-light);
+            padding-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-text);
+            padding: 0;
+            line-height: 1;
+        }
+
+        /* --- Image Upload Card Style (Matching Frequency Therapy Card) --- */
+        .upload-card {
+            /* Reset existing upload styles for the modal context if necessary */
+            padding: var(--spacing-md);
+            border: none;
+            /* Remove dashed border */
+            background-color: var(--color-background-light);
+            /* Light background for the card */
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .upload-card i {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+            display: block;
+        }
+
+        .upload-card h3 {
+            color: var(--color-primary-light);
+        }
+
+        /* Ensure preview container is centered and has clear boundaries */
+        .upload-card .preview-container {
+            margin: var(--spacing-md) auto;
+            border: 2px solid var(--color-primary);
+            background-color: var(--color-white);
+            height: 150px;
+            width: 150px;
+        }
+
+        /* Make progress bar fit better inside the card */
+        .upload-card .upload-progress {
+            max-width: 90%;
+            margin: var(--spacing-sm) auto;
+        }
+
+        /* Center the trigger button on the main page */
+        #home #openUploadModal {
+            margin: var(--spacing-lg) auto var(--spacing-md);
+            display: block;
+            width: fit-content;
+        }
+
+
+        /* --- Home Articles (Frequency Therapy, Expert Care) --- */
+        #home article {
+            display: inline-block;
+            width: 45%;
+            margin: var(--spacing-md) 2%;
+            padding: var(--spacing-md);
+            background-color: var(--color-background-light);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        #home article i {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* --- Submit Button --- */
+        .submit {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: var(--spacing-lg);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+
+        .submit:hover {
+            background-color: var(--color-primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* --- Treatment Grid --- */
+        #treatments h2 {
+            text-align: center;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .treatment-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .treatment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .treatment-card i {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+
+        .treatment-card a {
+            display: inline-flex;
+            align-items: center;
+            font-weight: bold;
+            margin-top: var(--spacing-sm);
+        }
+
+        .treatment-card a i {
+            font-size: 1rem;
+            margin-left: 5px;
+        }
+
+        .treatment-card .button {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-sm);
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .treatment-card .button:hover {
+            background-color: var(--color-primary-light);
+        }
+
+        /* --- Therapy Delivery --- */
+        #therapy-delivery h2,
+        #therapy-delivery p:first-of-type {
+            text-align: center;
+        }
+
+        /* Main image styling */
+        #therapy-delivery img.therapy-img {
+            display: block;
+            margin: var(--spacing-md) auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            /* Adding max-height and object-fit for better visual on large screens */
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        #therapy-delivery ol {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        #therapy-delivery ol li {
+            padding-left: var(--spacing-xl);
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        #therapy-delivery ol li h4 {
+            color: var(--color-primary-light);
+        }
+
+        #therapy-delivery ol li:before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive container for two therapy images */
+        .flex-img {
+            display: flex;
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .flex-img img {
+            flex: 1;
+            width: 50%;
+            max-width: 100%;
+            height: 150px;
+            /* Consistent height for visual appeal */
+            object-fit: cover;
+            border-radius: var(--border-radius);
+        }
+
+        .mail-box {
+            background-color: var(--color-background-light);
+            padding: var(--spacing-md);
+            border-left: 5px solid var(--color-primary);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin-top: var(--spacing-lg);
+        }
+
+        .mail-box div {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .mail-box i {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+
+        /* --- Contact Section --- */
+        .contact-info ul {
+            list-style: none;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 9px;
+        }
+
+        .contact-box{
+            display: flex;
+        }
+
+        .contact-info li i {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-right: var(--spacing-sm);
+            flex-shrink: 0;
+        }
+
+        .contact-info li h4 {
+            margin: 0;
+            color: var(--color-primary);
+            text-align: center;
+        }
+
+        .contact-info li p {
+            margin: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Image of office building */
+        #contact img.office-building {
+            display: flex;
+            width: 600px;
+            margin: 0 100px 5px 5px; 
+            height: 560px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        /* --- Warning Theme for Emergency --- */
+        .emergency .warning {
+            background-color: var(--color-warning-bg);
+            color: var(--color-warning-text);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            border: 1px solid var(--color-warning-text);
+        }
+
+        .emergency .warning i {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .emergency .warning p {
+            margin: 0;
+        }
+
+        .emergency .warning span {
+            display: block;
+            font-style: italic;
+            margin-top: var(--spacing-xs);
+        }
+
+        /* --- Mailchimp/Notification Section --- */
+        .notification {
+            background-color: var(--color-background-light);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--color-primary);
+        }
+
+        /* --- Yellow Theme for Note --- */
+        #mailchimp p strong:first-of-type {
+            /* Targeting the specific Note paragraph */
+            display: block;
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            background-color: var(--color-note-bg);
+            color: var(--color-note-text);
+            border-left: 5px solid var(--color-note-text);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-weight: normal;
+            /* Override strong's default boldness */
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: var(--spacing-xl) var(--spacing-md);
+            text-align: center;
+        }
+
+        .company-info {
+            margin-bottom: var(--spacing-md);
+        }
+
+        footer .logo img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+            /* Makes the logo white */
+        }
+
+        footer h1 {
+            color: var(--color-white);
+            margin: 0;
+        }
+
+        .basic {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: left;
+            margin: var(--spacing-lg) 0;
+            gap: var(--spacing-lg);
+        }
+
+        .basic h2 {
+            color: var(--color-white);
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--color-primary-light);
+            padding-bottom: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .basic ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            min-width: 150px;
+        }
+
+        .basic ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .basic ul li i {
+            margin-right: var(--spacing-xs);
+            color: var(--color-white);
+            font-size: 0.9rem;
+        }
+
+        .basic a {
+            color: var(--color-white);
+        }
+
+        .basic a:hover {
+            color: var(--color-primary-light);
+        }
+
+        /* --- Media Query Adjustments --- */
+        @media (max-width: 768px) {
+
+            /* Force therapy images to stack on mobile */
+            .flex-img {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .flex-img img {
+                width: 100%;
+                height: 200px;
+                /* Adjust height slightly larger for mobile view */
+            }
+
+            #contact img.office-building {
+                max-width: 90%;
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+
+        /* Small screens (e.g., Mobile devices) */
+        @media (max-width: 768px) {
+
+            /* --- Navigation Mobile View --- */
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .nav-toggle {
+                display: block;
+                /* Show hamburger on small screens */
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                display: none;
+                /* Hidden by default */
+                background-color: var(--color-primary-light);
+                margin-top: var(--spacing-sm);
+                padding: var(--spacing-sm) 0;
+            }
+
+            nav.open ul {
+                display: flex;
+                /* Show when 'open' class is added by JS */
+            }
+
+            nav ul li a {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav ul li:last-child a {
+                border-bottom: none;
+            }
+
+            /* --- General Layout Adjustments --- */
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            /* Home Articles stack */
+            #home article {
+                width: 100%;
+                margin: var(--spacing-sm) 0;
+                display: block;
+            }
+
+            /* Treatment grid becomes single column */
+            .treatment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Contact and Footer columns stack */
+            .contact-info li {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .basic {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .basic ul {
+                min-width: unset;
+                width: 80%;
+            }
+
+            .basic ul li {
+                justify-content: center;
+            }
+
+            /* Therapy image fix on smaller screens */
+            #therapy-delivery img.therapy-img {
+                max-height: 250px;
+            }
+        }
+
+        /* Medium screens (e.g., Tablets) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            .treatment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .flex-img {
+                flex-direction: row;
+                /* Keep flex in a row */
+                justify-content: space-between;
+            }
+
+            .flex-img img {
+                width: 48%;
+                /* Slightly less than 50% for gap */
+                height: 180px;
+            }
+        }
+
+        /* Large screens (Desktop) */
+        @media (min-width: 1025px) {
+
+            /* Further layout optimization for large displays */
+            .contact-info {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-lg);
+                text-align: left;
+            }
+
+            #contact>* {
+                text-align: center;
+            }
+
+            .flex-img img {
+                height: 200px;
+            }
+        }
+    </style>
+
+                
