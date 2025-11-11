@@ -1,0 +1,259 @@
+/* Products Grid Layout */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Product Card Styles */
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Product Image Section */
+.product-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* In products.css - Missing lazy loading for images */
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    loading: lazy; /* Add this */
+    decoding: async; /* Add this */
+}
+
+/* Add to products.css */
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+
+.product-card:hover .product-overlay {
+  opacity: 1;
+}
+
+.preview-btn {
+  background: #fff;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.preview-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Product Info Section */
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-info h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.description {
+  color: #666;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2ecc71;
+  margin: 0 0 1rem;
+}
+
+/* Purchase Options */
+.purchase-options {
+  margin-top: 1rem;
+}
+
+.email-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.payment-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.payment-buttons button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.paystack-card-btn {
+  background: #3498db;
+  color: white;
+}
+
+.paystack-card-btn:hover {
+  background: #2980b9;
+}
+
+.paystack-transfer-btn {
+  background: #2ecc71;
+  color: white;
+}
+
+.paystack-transfer-btn:hover {
+  background: #27ae60;
+}
+
+.stripe-btn {
+  background: #34495e;
+  color: white;
+}
+
+.stripe-btn:hover {
+  background: #2c3e50;
+}
+
+/* Payment Messages */
+.payment-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+.payment-message.error {
+  background: #e74c3c;
+}
+
+.payment-message.success {
+  background: #2ecc71;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-list {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .payment-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loading::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error State */
+.error-message {
+  background: #e74c3c;
+  color: white;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  text-align: center;
+}

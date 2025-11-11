@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HerbsWay Sign in</title>
+    <meta name="description" content="Sign in to your account securely. Access your healing sounds." />
+    
+  <!-- Other head elements like title, charset, etc. -->
+  
+  <!-- Modern Favicon for all browsers -->
+  <link rel="icon" href="img/IMG-20251105-WA0000.jpg" type="image/svg+xml">
+  <link rel="icon" href="img/IMG-20251105-WA0000.jpg" type="image/png">
+
+    
+    <!-- Schema.org markup for better SEO and AdSense crawling -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Sign In",
+      "description": "Sign in to your account securely.",
+      "url": "https://example.com/signin.html",
+      "potentialAction": {
+        "@type": "LoginAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://example.com/signin.html"
+        }
+      }
+    }
+    </script>
+
+    <style>
+        /* Define Dark Mode Variables */
+        :root{
+            --bg: #1A1A1A;             /* Charcoal Black Body Background */
+            --card: #242424;           /* Slightly Lighter Card Background */
+            --accent: #2eb4f1;         /* Emerald Green Accent */
+            --accent-hover: rgb(30, 184, 211);   /* Darker Emerald Green on Hover */
+            --primary-text: #FFFFFF;
+            --muted: #A9A9A9;          /* Light Grey for labels and muted text */
+            --input-bg: #333333;       /* Darker Input Field Background */
+            --input-border: #444444;   /* Darker Input Border */
+            --danger: #F87171;         /* Lighter Red for dark mode */
+            --radius:12px; 
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        
+        body{
+            margin:0; 
+            background: var(--bg); /* Solid Charcoal Black */
+            color: var(--primary-text);
+            display:flex; align-items:center; justify-content:center; padding:32px;
+        }
+        
+        .container{
+            width:100%; max-width:420px;
+        }
+        
+        /* Card & Shadow */
+        .card{
+            background:var(--card); 
+            border-radius:var(--radius); 
+            padding:28px; 
+            box-shadow:0 6px 30px rgba(0, 0, 0, 0.4); /* Darker shadow */
+            border:1px solid var(--input-border);
+        }
+        
+        /* Typography */
+        h1{font-size:24px; margin:0 0 6px; font-weight: 700;}
+        p.lead{margin:0 0 18px; color:var(--muted); font-size:16px}
+        form{display:grid; gap:16px}
+        
+        label{font-size:14px; color:var(--muted); display:block; margin-bottom:6px}
+        
+        /* Input Fields */
+        .field{
+            display:flex; align-items:center; gap:8px; 
+            background:var(--input-bg); 
+            padding:6px 12px; 
+            border-radius:10px;
+            border:1px solid var(--input-border);
+            transition: all 0.2s;
+        }
+        .field:has(input:focus){
+            outline:2px solid rgba(16, 185, 129, 0.2); 
+            border-color:var(--accent);
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+        
+        input[type="email"], input[type="password"]{
+            border:0; 
+            background:transparent; 
+            padding:10px 6px; 
+            width:100%; 
+            font-size:16px;
+            color: var(--primary-text);
+        }
+        
+        /* Icons */
+        .field svg path, .field svg circle {
+            stroke: var(--muted) !important; /* Force muted color for icons */
+        }
+
+        /* Password Toggle Button */
+        .pw-toggle{
+            background:transparent; border:0; cursor:pointer; padding:6px; border-radius:6px;
+            transition: background 0.2s;
+        }
+        .pw-toggle:hover {
+            background: #333333;
+        }
+        
+        /* Actions */
+        .actions{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:4px}
+        .checkbox{display:flex; align-items:center; gap:8px; color:var(--muted); font-size:14px}
+        .checkbox input[type="checkbox"] {
+            /* Basic styling for checkbox to look good on dark mode */
+            accent-color: var(--accent);
+        }
+        
+        /* Primary Button */
+        .btn{
+            display:inline-flex; align-items:center; justify-content:center; gap:8px; 
+            padding:12px 14px;
+            background:var(--accent); 
+            color:var(--card); /* White text on button */
+            border:0; 
+            border-radius:10px; 
+            font-size:16px; 
+            font-weight: 600;
+            cursor:pointer;
+            transition: all 0.2s;
+            box-shadow:0 6px 18px rgba(16, 185, 129, 0.3);
+            width: 100%;
+        }
+        .btn:hover:not([disabled]) {
+            background-color: var(--accent-hover);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+            transform: translateY(-1px);
+        }
+        .btn[disabled]{opacity:0.6; cursor:not-allowed; box-shadow: none; transform: none;}
+        
+        /* Secondary and Helper Links */
+        .muted{color:var(--muted); font-size:14px}
+        .muted a, .helper a {
+            color: var(--accent); /* Emerald link color */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .muted a:hover, .helper a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .helper{font-size:14px; color:var(--muted); text-align:center; margin-top:14px}
+        
+        /* Social Buttons */
+        .social{display:grid; gap:10px; margin-top:10px}
+        .social button{
+            display:flex; gap:10px; align-items:center; justify-content:center; 
+            padding:12px; 
+            border-radius:10px; 
+            border:1px solid var(--input-border); 
+            background:var(--input-bg); /* Darker background for social buttons */
+            color: var(--primary-text);
+            cursor:pointer;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .social button:hover {
+            background: #3a3a3a;
+            border-color: #555555;
+        }
+
+        /* SVG fixes for social buttons */
+        .social button svg path {
+            fill: var(--primary-text); /* Ensure GitHub path is white */
+        }
+        .social button svg:first-child circle {
+            /* Google icon circle stroke on dark mode */
+            stroke: #333333; 
+        }
+        
+        .error{color:var(--danger); font-size:14px; margin-top: 4px;}
+        
+        /* Responsive helpers */
+        @media (max-width: 640px) {
+            body{padding:12px}
+            .container{padding:0}
+            .card{padding:18px; border-radius:10px}
+            h1{font-size:1.25rem}
+            p.lead{font-size:0.95rem}
+            form{gap:12px}
+            .field{padding:10px 12px}
+            input[type="email"], input[type="password"]{font-size:16px; padding:8px 6px}
+            .actions{flex-direction:column; align-items:stretch; gap:10px}
+            .actions .checkbox{order:1}
+            .actions .muted, .actions a {order:2; text-align:right}
+            .btn{width:100%; padding:14px; font-size:16px}
+            .social{grid-template-columns:1fr;}
+            .social button{width:100%; justify-content:center}
+            .helper{font-size:14px}
+        }
+
+        /* Larger screens: allow slightly wider form */
+        @media (min-width: 1024px) {
+            body{padding:32px}
+            .container{max-width:600px}
+            .card{max-width:560px}
+            h1{font-size:28px}
+            .field{padding:8px 14px}
+        }
+    </style>
+</head>
+<body>
+    <main class="container" aria-labelledby="signin-heading">
+        <section class="card" role="region" aria-label="Sign in form">
+            <header>
+                <h1 id="signin-heading">HerbsWay sign in</h1>
+                <p class="lead">Enter your credentials to access healing sounds.</p>
+            </header>
+
+            <form id="signinForm" action="#" method="post" novalidate>
+                <div>
+                    <label for="email">Email</label>
+                    <div class="field">
+                        <!-- Icon uses stroke property which we set to --muted in CSS -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7.2v9.6A2.4 2.4 0 0 0 5.4 19.2h13.2A2.4 2.4 0 0 0 21 16.8V7.2L12 12 3 7.2z" stroke="#9CA3AF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <input id="email" name="email" type="email" placeholder="you@company.com" required autocomplete="email" aria-required="true"/>
+                    </div>
+                    <div id="emailError" class="error" aria-live="polite" style="display:none"></div>
+                </div>
+
+                <div>
+                    <label for="password">Password</label>
+                    <div class="field">
+                        <input id="password" name="password" type="password" placeholder="••••••••" required minlength="8" autocomplete="current-password" aria-required="true" required />
+                        <button type="button" class="pw-toggle" aria-label="Show password" title="Show password" id="pwToggle">
+                            <!-- Eye Open Icon -->
+                            <svg id="eyeOpen" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="#9CA3AF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="#9CA3AF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <!-- Eye Closed Icon -->
+                            <svg id="eyeClosed" width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:none" aria-hidden="true"><path d="M3 3l18 18" stroke="#9CA3AF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 10.6a3 3 0 0 0 4.8 4.8" stroke="#9CA3AF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                    <div id="pwError" class="error" aria-live="polite" style="display:none"></div>
+                </div>
+
+                <div class="actions">
+                    <label class="checkbox"><input id="remember" name="remember" type="checkbox" /> Remember me</label>
+                    <a href="#" class="muted" id="forgotLink">Forgot password?</a>
+                </div>
+
+                <div>
+                    <button class="btn" type="submit" id="submitBtn" >Sign in</button>
+                </div>
+
+                <div class="helper">
+                    <div class="muted">or continue with</div>
+                    <div class="social">
+                        <button type="button" onclick="socialSign('Google')" aria-label="Sign in with Google">
+                            <!-- Google SVG with updated colors for dark background -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10" fill="#4285F4" stroke="#4285F4" />
+                                <path d="M21 12.2c0-.68-.06-1.33-.18-1.96H12v3.72h5.4c-.24 1.3-1 2.4-2.14 3.14v2.58H19.9c2.18-2 3.24-5 3.24-8.48z" fill="#FFFFFF"/>
+                            </svg>
+                            Continue with Google
+                        </button>
+                        <button type="button" onclick="socialSign('GitHub')" aria-label="Sign in with GitHub">
+                            <!-- GitHub SVG updated to white fill for dark mode -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.48c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.04 1.53 1.04.9 1.54 2.36 1.1 2.94.84.09-.66.35-1.1.63-1.35-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.26-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.02A9.58 9.58 0 0 1 12 6.84c.85.004 1.71.115 2.51.337 1.9-1.29 2.74-1.02 2.74-1.02.56 1.38.21 2.4.1 2.66.64.7 1.03 1.58 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" fill="#FFFFFF"/></svg>
+                            Continue with GitHub
+                        </button>
+                    </div>
+                </div>
+
+                <p class="helper">Don't have an account? <a href="signup.html" >Create one</a></p>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Global variables required by the environment (kept for reference)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        // Small client-side helpers: validation, password toggle, and submit state
+        // Wrapped in an IIFE to keep scope clean
+        (function(){
+            const form = document.getElementById('signinForm');
+            const email = document.getElementById('email');
+            const pw = document.getElementById('password');
+            const emailError = document.getElementById('emailError');
+            const pwError = document.getElementById('pwError');
+            const submitBtn = document.getElementById('submitBtn');
+            const pwToggle = document.getElementById('pwToggle');
+            const eyeOpen = document.getElementById('eyeOpen');
+            const eyeClosed = document.getElementById('eyeClosed');
+
+            // --- Password Visibility Toggle ---
+            pwToggle.addEventListener('click', () => {
+                const isPw = pw.type === 'password';
+                pw.type = isPw ? 'text' : 'password';
+                eyeOpen.style.display = isPw ? 'none' : '';
+                eyeClosed.style.display = isPw ? '' : 'none';
+                pwToggle.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password');
+            });
+
+            // --- Error Display Utility ---
+            function showError(el, msg){
+                el.textContent = msg;
+                el.style.display = msg ? 'block' : 'none';
+            }
+
+            // --- Validation Logic ---
+            function validate(){
+                let ok = true;
+                
+                // Email validation
+                if(!email.value.trim()){
+                    showError(emailError, 'Email is required.');
+                    ok = false;
+                } else if(!/^\S+@\S+\.\S+$/.test(email.value)){
+                    showError(emailError, 'Enter a valid email address.');
+                    ok = false;
+                } else {
+                    showError(emailError, '');
+                }
+
+                // Password validation
+                if(!pw.value){
+                    showError(pwError, 'Password is required.');
+                    ok = false;
+                } else if(pw.value.length < 8){
+                    showError(pwError, 'Password must be at least 8 characters.');
+                    ok = false;
+                } else {
+                    showError(pwError, '');
+                }
+                return ok;
+            }
+
+            // --- Form Submission Handler ---
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Clear any existing errors first
+                showError(emailError, '');
+                showError(pwError, '');
+                
+                // Run enhanced client-side validation
+                if(!validate()) {
+                    // Focus the first invalid field
+                    const firstInvalid = form.querySelector('[aria-invalid="true"]');
+                    if (firstInvalid) firstInvalid.focus();
+                    return;
+                }
+                
+                // Disable form elements during submission
+                const formElements = form.querySelectorAll('input, button');
+                formElements.forEach(el => el.disabled = true);
+                
+                // Show loading state with spinner
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right: 8px;">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2">
+                            <animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                    Signing in...`;
+                
+                try {
+                    // Simulate API call with artificial delay
+                    await new Promise(resolve => setTimeout(resolve, 900));
+                    
+                    // Log successful attempt
+                    console.log('Successfully signed in as:', email.value);
+                    
+                    // Redirect to main page
+                    window.location.href = 'sounds.html?source=email';
+                    
+                } catch (error) {
+                    // Show error message
+                    showError(emailError, 'Failed to sign in. Please try again.');
+                    
+                    // Reset form state
+                    formElements.forEach(el => el.disabled = false);
+                    submitBtn.innerHTML = originalBtnText;
+                    
+                    // Focus email field for retry
+                    email.focus();
+                }
+            });
+
+            // Accessibility: validate on blur for quick feedback
+            email.addEventListener('blur', validate);
+            pw.addEventListener('blur', validate);
+
+            // --- Social Sign-in Implementation ---
+            window.socialSign = function(provider) {
+                const googleBtn = document.querySelector('button[aria-label="Sign in with Google"]');
+                const githubBtn = document.querySelector('button[aria-label="Sign in with GitHub"]');
+                const button = provider === 'Google' ? googleBtn : githubBtn;
+                const originalContent = button.innerHTML;
+
+                // Disable both buttons during sign-in
+                googleBtn.disabled = true;
+                githubBtn.disabled = true;
+
+                // Show loading state
+                button.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2">
+                            <animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                    Connecting...`;
+
+                // Simulate OAuth flow
+                setTimeout(() => {
+                    console.log(`Successfully signed in with ${provider}`);
+                    // Redirect with provider source
+                    window.location.href = `main.html?source=${provider.toLowerCase()}`;
+
+                    // Reset button state if redirect fails
+                    button.disabled = false;
+                    button.innerHTML = originalContent;
+                    googleBtn.disabled = false;
+                    githubBtn.disabled = false;
+                }, 1000);
+            };
+
+            // --- Form Validation Enhancement ---
+            function validateField(input, errorEl, rules) {
+                const value = input.value.trim();
+                let error = '';
+
+                if (!value) {
+                    error = `${input.labels[0].textContent} is required.`;
+                } else if (rules.pattern && !rules.pattern.test(value)) {
+                    error = rules.message;
+                } else if (rules.minLength && value.length < rules.minLength) {
+                    error = `${input.labels[0].textContent} must be at least ${rules.minLength} characters.`;
+                }
+
+                showError(errorEl, error);
+                input.setAttribute('aria-invalid', error ? 'true' : 'false');
+                return !error;
+            }
+
+            // Enhance validation with better rules
+            function validate() {
+                const emailValid = validateField(email, emailError, {
+                    pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: 'Please enter a valid email address.'
+                });
+
+                const pwValid = validateField(pw, pwError, {
+                    minLength: 8
+                });
+
+                return emailValid && pwValid;
+            }
+        })();
+    </script>
+</body>
+</html>

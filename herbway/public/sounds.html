@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HerbsWay - Therapeutic Sounds</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Modern Favicon for all browsers -->
+    <link rel="icon" href="img/IMG-20251105-WA0000.jpg" type="image/svg+xml">
+    <link rel="icon" href="img/IMG-20251105-WA0000.jpg" type="image/png">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Add to HTML head -->
+    <meta name="description" content="Therapeutic sounds for meditation and relaxation">
+    <meta property="og:title" content="Herbsway - Therapeutic Sounds">
+    <meta property="og:description" content="Discover our collection of therapeutic sounds">
+    <meta property="og:image" content="/images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">  
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+<body>
+    <header>
+        <h1>HerbsWay - Therapeutic Sounds</h1>
+        <p>The baddest sounds for your hits, from Lagos to the world!</p>
+    </header>
+
+    <main>
+        <div class="product-list">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <!-- In HTML templates - Missing ARIA labels -->
+                <button class="paystack-card-btn" 
+                    aria-label="Pay with Card or USSD"
+                    data-sound-id="${product.file}" 
+                    data-sound-name="${product.name}"
+                    data-price="${product.price_ngn}">
+                    Pay with Card / USSD
+                </button>
+
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <!-- In HTML templates - Missing ARIA labels -->
+                <button class="paystack-card-btn" 
+                    aria-label="Pay with Card or USSD"
+                    data-sound-id="${product.file}" 
+                    data-sound-name="${product.name}"
+                    data-price="${product.price_ngn}">
+                    Pay with Card / USSD
+                </button>
+
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+            
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <h2>Afrobeat Drum Loop</h2>
+                <p>The perfect groove for your next Afrobeat banger.</p>
+                <p class="price">₦500 / $1.99</p>
+                
+                <!-- Email input for Paystack (used for both card and transfer) -->
+                <input type="email" placeholder="Enter your email for Paystack" class="email-input" required>
+                
+                <!-- Payment Buttons -->
+                <div class="payment-options">
+                    <button class="paystack-card-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Card / USSD</button>
+                    <button class="paystack-transfer-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="500">Pay with Bank Transfer</button>
+                    <button class="stripe-btn" data-sound-id="afrobeat_loop.wav" data-sound-name="afrobeat_loop.wav" data-price="1.99">Pay with PayPal</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="client.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/payment.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

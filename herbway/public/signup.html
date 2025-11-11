@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HerbsWay — Sign up</title>
+    <meta name="description" content="Create your HerbsWay account and start your healing process. Simple signup process with secure authentication options." />
+    
+    <!-- Modern Favicon for all browsers -->
+  <link rel="icon" href="img/IMG-20251105-WA0000.jpg" type="image/svg+xml">
+  <link rel="icon" href="img/IMG-20251105-WA0000.jpg" type="image/png">
+    <meta name="theme-color" content="#059669">
+    
+    <!-- Schema.org markup for better SEO and AdSense crawling -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SurePay Sign Up",
+      "description": "Create your SurePay account and start earning rewards. Simple signup process with secure authentication options.",
+      "url": "https://surepay.com/signup.html",
+      "potentialAction": {
+        "@type": "RegisterAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://surepay.com/signup.html"
+        }
+      }
+    }
+    </script>
+
+    <style>
+        /* Define Dark Mode Variables */
+        :root{
+            --bg: #1A1A1A;             /* Charcoal Black Body Background */
+            --card: #242424;           /* Slightly Lighter Card Background */
+            --accent:  #2eb4f1;         /* Emerald Green Accent */
+            --accent-hover: rgb(30, 184, 211);   /* Darker Emerald Green on Hover */
+            --primary-text: #FFFFFF;
+            --muted: #A9A9A9;          /* Light Grey for labels and muted text */
+            --input-border: #444444;   /* Darker Input Border */
+            --error-color: #F87171;    /* Lighter Red for dark mode */
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        
+        /* General Layout & Background */
+        html,body{height:100%}
+        body{
+            margin:0; display:flex; align-items:center; justify-content:center;
+            /* Using a solid black background */
+            background: var(--bg);
+            color: var(--primary-text); /* White text */
+            padding:2rem;
+        }
+        
+        /* Card Styles */
+        .card{
+            width:100%; max-width:420px; 
+            background:var(--card); 
+            border-radius:12px;
+            /* Subtle shadow for depth */
+            box-shadow:0 6px 24px rgba(0, 0, 0, 0.4); 
+            padding:2rem 1.5rem; /* Increased vertical padding slightly */
+            border: 1px solid var(--input-border);
+        }
+        
+        /* Typography */
+        h1{margin:0 0 0.25rem;font-size:1.5rem; font-weight:700;}
+        p.lead{margin:0 0 1.5rem;color:var(--muted);font-size:1rem}
+        
+        /* Form & Inputs */
+        form{display:grid; gap:1rem} /* Increased gap slightly */
+        label{font-size:0.9rem; color:var(--muted); margin-bottom: 2px; display: block;}
+        
+        input[type="text"], input[type="email"], input[type="password"]{
+            width:100%; padding:0.75rem 1rem; 
+            border:1px solid var(--input-border); 
+            border-radius:8px;
+            font-size:1rem; box-sizing:border-box;
+            background-color: #333333; /* Darker input background */
+            color: var(--primary-text);
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5); /* Emerald focus ring */
+        }
+        
+        .row{display:flex; gap:1rem}
+        .row > *{flex:1}
+        
+        /* Actions & Button */
+        .actions{display:flex; align-items:center; justify-content:space-between; gap:0.5rem; margin-top: 0.5rem;}
+        button{
+            background:var(--accent); 
+            color:var(--card); /* Use card color for pure white text */
+            border:0; 
+            padding:0.75rem 1.25rem; 
+            border-radius:8px;
+            cursor:pointer; 
+            font-weight:700; 
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+        }
+        button:hover:not([disabled]) {
+            background-color: var(--accent-hover);
+            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
+            transform: translateY(-1px);
+        }
+        button[disabled]{opacity:0.6; cursor:not-allowed; box-shadow: none; transform: none;}
+        
+        /* Helper & Footer Text */
+        .muted{color:var(--muted); font-size:0.95rem}
+        .muted a {
+            color: var(--accent); /* Emerald link color */
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .muted a:hover {
+            text-decoration: underline;
+        }
+
+        /* Social Buttons */
+        .social{display:grid; gap:10px; margin-top:10px}
+        .social button{
+            display:flex; gap:10px; align-items:center; justify-content:center; 
+            padding:12px; width:100%;
+            border-radius:10px; 
+            border:1px solid var(--input-border); 
+            background:var(--input-bg); /* Darker background for social buttons */
+            color: var(--primary-text);
+            cursor:pointer;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .social button:hover {
+            background: #3a3a3a;
+            border-color: #555555;
+        }
+        .social button svg:first-child circle {
+            /* Google icon circle stroke on dark mode */
+            stroke: #333333; 
+        }
+        .helper{font-size:14px; color:var(--muted); text-align:center; margin-top:14px}
+        
+        .note{font-size:0.85rem; color:var(--muted); opacity: 0.7; margin-top:0.25rem}
+        .error{color:var(--error-color); font-size:0.85rem; margin-top:0.25rem}
+        .footer{font-size:0.85rem; text-align:center; color:var(--muted); margin-top:1.5rem}
+        
+        /* Responsive helpers */
+        @media (max-width: 640px) {
+            body{padding:1rem}
+            .card{padding:1.25rem; border-radius:10px;}
+            h1{font-size:1.25rem}
+            p.lead{font-size:0.95rem}
+            .row{display:flex; flex-direction:column; gap:0.75rem}
+            .actions{flex-direction:column; align-items:stretch}
+            .actions .muted{order:2; text-align:center}
+            button{width:100%; padding:0.9rem; font-size:1rem}
+            input[type="text"], input[type="email"], input[type="password"]{padding:0.85rem}
+            .note, .error{font-size:0.85rem}
+        }
+
+        /* Larger screens: allow slightly wider form */
+        @media (min-width: 1024px) {
+            .card{max-width:520px}
+            h1{font-size:1.6rem}
+        }
+    </style>
+</head>
+<body>
+    <main class="card" role="main">
+        <header>
+            <h1>Get started with HerbsWay</h1>
+            <p class="lead">Create your account to manage therapy securely.</p>
+        </header>
+
+        <div class="social">
+            <button type="button" id="googleSignIn" onclick="handleGoogleSignIn()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.04 12.2614C23.04 11.4459 22.9668 10.6618 22.8309 9.90909H12V14.3575H18.1891C17.9225 15.795 17.1123 17.013 15.8943 17.8284V20.7139H19.6109C21.7855 18.7118 23.04 15.7636 23.04 12.2614Z" fill="#4285F4"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23.4998C15.105 23.4998 17.7081 22.4701 19.6109 20.7137L15.8943 17.8282C14.8645 18.5182 13.5472 18.9259 12 18.9259C9.00474 18.9259 6.46951 16.903 5.56519 14.1848H1.72314V17.1644C3.61542 20.9228 7.50451 23.4998 12 23.4998Z" fill="#34A853"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56523 14.1851C5.33523 13.4951 5.20455 12.7581 5.20455 12.0001C5.20455 11.2421 5.33523 10.5051 5.56523 9.81506V6.83551H1.72318C0.944318 8.38801 0.5 10.1444 0.5 12.0001C0.5 13.8557 0.944318 15.6121 1.72318 17.1646L5.56523 14.1851Z" fill="#FBBC05"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.07386C13.6884 5.07386 15.2043 5.65409 16.3961 6.79364L19.6945 3.49523C17.7029 1.63955 15.0997 0.5 12 0.5C7.50451 0.5 3.61542 3.077 1.72314 6.83545L5.56519 9.815C6.46951 7.09682 9.00474 5.07386 12 5.07386Z" fill="#EA4335"/>
+                </svg>
+                Continue with Google
+            </button>
+        </div>
+        
+        <div class="helper">or create an account with email</div>
+
+        <form id="signupForm" autocomplete="on" novalidate>
+            <div class="row">
+                <div>
+                    <label for="firstName">First name</label>
+                    <input id="firstName" name="firstName" type="text" required autocomplete="given-name" />
+                </div>
+                <div>
+                    <label for="lastName">Last name</label>
+                    <input id="lastName" name="lastName" type="text" required autocomplete="family-name" />
+                </div>
+            </div>
+
+            <div>
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" required autocomplete="email" />
+            </div>
+
+            <div class="row">
+                <div>
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" required minlength="8" autocomplete="new-password" />
+                    <div id="pwHelp" class="note">At least 8 characters.</div>
+                </div>
+                <div>
+                    <label for="confirm">Confirm password</label>
+                    <input id="confirm" name="confirm" type="password" required autocomplete="new-password" />
+                    <div id="pwError" class="error" aria-live="polite" style="display:none"></div>
+                </div>
+            </div>
+
+            <div>
+                <label>
+                    <input id="tos" name="tos" type="checkbox" required />
+                    <span class="muted">I agree to the Terms of Service and Privacy Policy</span>
+                </label>
+            </div>
+
+            <div class="actions">
+                <button id="submitBtn" type="submit" aria-label="Create account">Create account</button>
+                <div class="muted">Already have an account? <a href="signin.html" target="_blank" aria-label="Sign in">Sign in</a></div>
+            </div>
+        </form>
+
+        <div class="footer">Securely powered by HerbsWay• © <span id="year"></span></div>
+    </main>
+
+    <script>
+        // Ensure this code works even if the canvas environment doesn't define these global variables
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Google Sign In Handler
+        function handleGoogleSignIn() {
+            const googleBtn = document.getElementById('googleSignIn');
+            googleBtn.disabled = true;
+            googleBtn.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="4">
+                        <animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/>
+                    </circle>
+                </svg>
+                Connecting to Google...
+            `;
+
+            // Simulate Google sign-in process with user info
+            setTimeout(() => {
+                // Simulate getting user info from Google
+                // In a real implementation, this would come from the Google OAuth response
+                const mockGoogleResponse = {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    email: 'john.doe@gmail.com',
+                    photoUrl: 'https://lh3.googleusercontent.com/photo'
+                };
+
+                // Construct the URL with all relevant information
+                const params = new URLSearchParams({
+                    firstName: mockGoogleResponse.firstName,
+                    lastName: mockGoogleResponse.lastName,
+                    email: mockGoogleResponse.email,
+                    source: 'google',
+                    photoUrl: mockGoogleResponse.photoUrl
+                });
+
+                // Redirect to main page with user info
+                window.location.href = `sounds.html?${params.toString()}`;
+                
+                // Reset button state if redirect fails
+                googleBtn.disabled = false;
+                googleBtn.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.04 12.2614C23.04 11.4459 22.9668 10.6618 22.8309 9.90909H12V14.3575H18.1891C17.9225 15.795 17.1123 17.013 15.8943 17.8284V20.7139H19.6109C21.7855 18.7118 23.04 15.7636 23.04 12.2614Z" fill="#4285F4"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23.4998C15.105 23.4998 17.7081 22.4701 19.6109 20.7137L15.8943 17.8282C14.8645 18.5182 13.5472 18.9259 12 18.9259C9.00474 18.9259 6.46951 16.903 5.56519 14.1848H1.72314V17.1644C3.61542 20.9228 7.50451 23.4998 12 23.4998Z" fill="#34A853"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56523 14.1851C5.33523 13.4951 5.20455 12.7581 5.20455 12.0001C5.20455 11.2421 5.33523 10.5051 5.56523 9.81506V6.83551H1.72318C0.944318 8.38801 0.5 10.1444 0.5 12.0001C0.5 13.8557 0.944318 15.6121 1.72318 17.1646L5.56523 14.1851Z" fill="#FBBC05"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.07386C13.6884 5.07386 15.2043 5.65409 16.3961 6.79364L19.6945 3.49523C17.7029 1.63955 15.0997 0.5 12 0.5C7.50451 0.5 3.61542 3.077 1.72314 6.83545L5.56519 9.815C6.46951 7.09682 9.00474 5.07386 12 5.07386Z" fill="#EA4335"/>
+                    </svg>
+                    Continue with Google
+                `;
+            }, 1000);
+
+            // Optional: Add error handling
+            // setTimeout(() => {
+            //     if (/* error condition */) {
+            //         googleBtn.disabled = false;
+            //         googleBtn.innerHTML = 'Error connecting to Google';
+            //     }
+            // }, 5000);
+        }
+    </script>
+    <!-- 
+        We are keeping the original JavaScript logic for form validation and simulated submission.
+        No Firebase logic is added as the original code simulated the submission using a setTimeout.
+    -->
+    <script>
+        (function(){
+            const form = document.getElementById('signupForm');
+            const firstNameInput = document.getElementById('firstName'); 
+            const pw = document.getElementById('password');
+            const confirm = document.getElementById('confirm');
+            const pwError = document.getElementById('pwError');
+            const submitBtn = document.getElementById('submitBtn');
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            function validatePasswords(){
+                // Hide error if both fields are empty
+                if(!pw.value && !confirm.value){ 
+                    pwError.style.display='none'; 
+                    return true; 
+                }
+                
+                // Show error if values exist but do not match
+                if(pw.value !== confirm.value){
+                    pwError.textContent = "Passwords do not match.";
+                    pwError.style.display = 'block';
+                    return false;
+                }
+                
+                // Passwords match
+                pwError.style.display = 'none';
+                return true;
+            }
+
+            pw.addEventListener('input', validatePasswords);
+            confirm.addEventListener('input', validatePasswords);
+
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+
+                // 1. Check native HTML validation AND custom password validation
+                if(!form.checkValidity() || !validatePasswords()){
+                    // If validation fails, focus on the first invalid control
+                    const firstInvalid = form.querySelector(':invalid');
+                    if(firstInvalid) firstInvalid.focus();
+                    return; // Stop submission
+                }
+
+                // --- Validation Passed ---
+                
+                // 2. Get the first name value
+                const userName = firstNameInput.value;
+
+                // 3. Construct the redirection URL with the first name parameter
+                const redirectUrl = 'sounds.html?firstName=' + encodeURIComponent(userName);
+                
+                // Disable button and change text to indicate loading/submission
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creating...';
+
+                // Simulate successful account creation via API call (800ms delay)
+                setTimeout(() => {
+                    // Successful action: Redirect the user to the main application page with the name parameter
+                    window.location.href = redirectUrl;
+                    
+                    // Note: If the redirect fails for some reason, re-enable the button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Create account';
+                }, 800);
+            });
+        })();
+    </script>
+    <script src="sw.js"></script>
+</body>
+</html>

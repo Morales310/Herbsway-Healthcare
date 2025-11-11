@@ -1,0 +1,366 @@
+/* responsive.css */
+
+/* Base Styles */
+:root {
+  --max-width: 1200px;
+  --padding: 1rem;
+  --grid-gap: 2rem;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--padding);
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+  padding: var(--padding);
+}
+
+/* Product Grid Adjustments */
+.product-list {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding: var(--padding);
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1400px) {
+  :root {
+    --padding: 2rem;
+    --grid-gap: 2.5rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Desktop Screens */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .product-card {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+/* Tablet Screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --padding: 1.5rem;
+    --grid-gap: 1.5rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-card {
+    max-width: 100%;
+  }
+
+  .payment-buttons {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .payment-buttons button {
+    flex: 1;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Landscape */
+@media (min-width: 576px) and (max-width: 767px) {
+  :root {
+    --padding: 1rem;
+    --grid-gap: 1rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-info {
+    padding: 1rem;
+  }
+
+  .product-info h2 {
+    font-size: 1.1rem;
+  }
+
+  .payment-buttons {
+    flex-direction: column;
+  }
+
+  .payment-buttons button {
+    width: 100%;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 575px) {
+  :root {
+    --padding: 0.75rem;
+    --grid-gap: 1rem;
+  }
+
+  .product-list {
+    grid-template-columns: 1fr;
+    padding: 0.75rem;
+  }
+
+  .product-card {
+    margin-bottom: 1rem;
+  }
+
+  .product-image {
+    height: 180px;
+  }
+
+  .product-info {
+    padding: 0.75rem;
+  }
+
+  .product-info h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .price {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .email-input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .payment-buttons button {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  /* Adjust modal sizes for mobile */
+  .modal {
+    width: 95%;
+    margin: 1rem auto;
+  }
+
+  /* Navigation adjustments */
+  .nav-menu {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .nav-item {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Footer adjustments */
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 320px) {
+  :root {
+    --padding: 0.5rem;
+  }
+
+  .product-list {
+    padding: 0.5rem;
+  }
+
+  .product-info {
+    padding: 0.5rem;
+  }
+
+  .payment-buttons button {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .product-image img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .product-card {
+    background: #2a2a2a;
+    color: #fff;
+  }
+
+  .product-info h2 {
+    color: #fff;
+  }
+
+  .description {
+    color: #ccc;
+  }
+
+  .email-input {
+    background: #333;
+    border-color: #444;
+    color: #fff;
+  }
+
+  .email-input:focus {
+    border-color: #666;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  .product-image img,
+  .payment-buttons button {
+    transition: none;
+  }
+
+  .product-card:hover {
+    transform: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .payment-buttons,
+  .product-overlay {
+    display: none;
+  }
+
+  .product-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* Landscape Orientation Specific Styles */
+@media (max-height: 500px) and (orientation: landscape) {
+  .product-image {
+    height: 150px;
+  }
+
+  .product-info {
+    padding: 0.5rem;
+  }
+
+  .payment-buttons {
+    flex-direction: row;
+  }
+}
+
+/* Utility Classes for Responsive Design */
+.hide-mobile {
+  display: block;
+}
+
+.show-mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .show-mobile {
+    display: block;
+  }
+}
+
+/* Responsive Typography */
+@media (max-width: 767px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+/* Responsive Spacing */
+@media (max-width: 767px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Responsive Tables */
+@media (max-width: 767px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 500px;
+  }
+}
+
+/* Responsive Forms */
+@media (max-width: 767px) {
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+}
+
+/* Responsive Images */
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive Videos */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
